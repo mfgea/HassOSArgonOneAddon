@@ -1,0 +1,36 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base"
+  ],
+  "packageRules": [
+    {
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchUpdateTypes": [
+        "major",
+        "minor",
+        "patch"
+      ],
+      "enabled": true,
+      "groupName": "docker base images",
+      "groupSlug": "docker-base"
+    }
+  ],
+  "regexManagers": [
+    {
+      "fileMatch": [
+        "(?:^|/)build\\.ya?ml$"
+      ],
+      "matchStrings": [
+        "ghcr.io/hassio-addons/base/(?<platform>.*?):(?<currentValue>.*?)\\s"
+      ],
+      "depNameTemplate": "ghcr.io/hassio-addons/base",
+      "datasourceTemplate": "docker"
+    }
+  ],
+  "dockerfile": {
+    "enabled": true
+  }
+}
