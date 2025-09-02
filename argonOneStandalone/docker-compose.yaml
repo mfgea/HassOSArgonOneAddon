@@ -1,0 +1,16 @@
+services:
+  argonone:
+    build: .
+    container_name: argonone_linear_standalone
+    restart: unless-stopped
+    volumes:
+      - ./data:/app/data
+    environment:
+      - MIN_TEMP=0
+      - MAX_TEMP=100
+      - TEMP_UNIT=C
+      - CREATE_ENTITY=true
+      - LOG_TEMP=true
+      - MANUAL_MODE=true
+      - HOMEASSISTANT_URL=http://hassio/homeassistant
+      - HOMEASSISTANT_SUPERVISOR_TOKEN=${HOMEASSISTANT_SUPERVISOR_TOKEN}
